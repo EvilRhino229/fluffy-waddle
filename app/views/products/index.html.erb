@@ -1,0 +1,9 @@
+<h1>Products</h1>
+
+  <% @products.each do |product| %>
+  <div class="product">
+    <h3><%= link_to("#{product.name}", "/products/#{product.id}") %></h3>
+    <p><%= product.price_format %></p>
+    <p><%= product.description %></p>
+  </div>
+<% end %>
