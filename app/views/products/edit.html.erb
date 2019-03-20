@@ -1,0 +1,18 @@
+<h1>what, did you mess something up on an online store?</h1>
+<h2>that's... not good</h2>
+
+<%= form_tag("/products/#{@product.id}", method: :put) do %>
+<%= label_tag(:name, "here, this is a start") %>
+  <br>
+  <%= text_field_tag(:name, @product.name) %>
+  <br>
+  <%= label_tag(:description, "hopefully nobody's already bought your defective product") %>
+  <br>
+  <%= text_area_tag(:description, @product.description, size: '40x10') %>
+  <br>
+  <%= label_tag(:price, "i bet it was here") %>
+  <br>
+  <%= number_field_tag(:price, @product.price) %>
+  <br>
+  <%= submit_tag("okay, maybe this will look better") %>
+<% end %>

@@ -1,2 +1,9 @@
+<h3><%= @product.name %></h3>
 <p><%= @product.price_format %></p>
 <p><%= @product.description %></p>
+<%= link_to("You goofed something", "/products/#{product.id}/edit") %>
+<br>
+<%= link_to("Now go back to your comfort zone.", "/products") %>
+<br>
+<br>
+<%= link_to("If you made a mistake so big you gotta erase it, go here.", "/products/#{product.id}", method: :delete) %>
