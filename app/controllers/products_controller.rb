@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
   def index
-    if params[:category_id] && params[:category_id] != ""
+
+    if params[:category_id] && Category.ids.include?(params[:category_id].to_i)
       @category = Category.find(params[:category_id])
       @products = @category.products
     else
-      @products = Product.all.sort
+      @products = Product.all.order(id: :asc)
     end
 
     @categories = Category.all.sort
