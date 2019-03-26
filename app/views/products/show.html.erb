@@ -4,9 +4,6 @@
 <%= label_tag(:category_id, @product.category_id) %>
 <p><%= @product.price_format %></p>
 <p><%= @product.description %></p>
-<%= link_to("You goofed something", "/products/#{@product.id}/edit") %>
-<br>
-<%= link_to("Now go back to your comfort zone.", "/products") %>
-<br>
-<br>
-<%= link_to("If you made a mistake so big you gotta erase it, go here.", "/products/#{@product.id}", method: :delete) %>
+<%= link_to("You goofed something", "/products/#{@product.id}/edit", class: "btn btn-warning") %>
+<%= link_to("Now go back to your comfort zone.", "/products", class: "btn btn-primary") %>
+<%= link_to("If you made a mistake so big you gotta erase it, go here.", "/products/#{@product.id}", method: :delete, data: {confirm: "You're gonna just delete this thing? No ritual?"}, class: "btn btn-danger") %>

@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
                           image_url: params[:image_url]
       )
     product.save
+    flash[:success] = "Nice, that merchandise is someone else's problem now."
     redirect_to "/products/#{product.id}"
   end
 
@@ -45,12 +46,14 @@ class ProductsController < ApplicationController
                    category_id: params[:category_id],
                    image_url: params[:image_url]
       )
+    flash[:notice] = "You fixed that thing you goofed. Nice."
     redirect_to "/products/#{product.id}"
   end
 
   def destroy
     product = Product.find(params[:id])
     product.destroy
+    flash[:error] = "You exorcised the demon that has been tormenting you."
     redirect_to "/products"
   end
 end
