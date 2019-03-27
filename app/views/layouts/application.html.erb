@@ -11,11 +11,11 @@
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Haunted Doll Watch</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand">Haunted Doll Watch</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -26,27 +26,28 @@
       <li class="nav-item">
         <a class="nav-link" href="/products/new">New sp00ks</a>
       </li>
+    <% if user_signed_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        </a>
-      </li>
-    <% if user_signed_in? %>
           <%= current_user.email %> is logged in.
+        </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to("Change just enough that these things can't find you", edit_user_registration_path, class: "dropdown-item") %>
           <div class="dropdown-divider"></div>
-            <%= link_to("Change just enough that these things can't find you", edit_user_registration_path, class: "dropdown-item") %> | 
             <%= link_to('escape this hell', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
         <% else %>
           <li class="nav-item <%= 'active' if current_page?('/users/sign_in')%>">
           <%= link_to("/users/sign_in", class: "nav-link") do %>
         log in <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?("/users/sign_in") %>
-    <% end %>
-        <% end %>
+      <% end %>
+        </a>
+      </li>
         </div>
+    <% end %>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">snoop around (snoop up, snoop up and get down)</button>
     </form>
   </div>
 </nav>

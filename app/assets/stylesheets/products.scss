@@ -3,8 +3,27 @@
   margin-bottom: 4rem;
 }
 
-/*body{
-  background-image: url("https://i.ytimg.com/vi/wpsb3-YQAQw/hqdefault.jpg");
-
+body{
+  background-image: url("https://66.media.tumblr.com/8943fc33b5c4b161ed37e567dbc7494a/tumblr_oryr79BV2J1ws4t98o1_1280.png");
+  background-size: cover;
   color: white;
-}*/
+}
+
+.img {
+    position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+
+.row {
+  /*padding-top: 10rem;*/
+  /*padding-bottom: 10rem;*/
+}
+
+.navbar-brand{
+  color: black;
+}

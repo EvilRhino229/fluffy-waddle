@@ -18,13 +18,16 @@
 <div class="row">
 <!-- <%= link_to("Wanna host your own haunted doll? Beep bebeep?", "/products/new") %> -->
   <% @products.each do |product| %>
-    <div class="product col-lg-12">
-    <h3><%= product.name %></h3>
+    <div class="product col-lg-6">
+    <figcaption><%= product.name %>
       <%= link_to("/products/#{product.id}") do %>
-      <%= image_tag("#{product.image_url}") %>
+      <figure>
+      <%= image_tag("#{product.image_url}", style: "height: 80%; width: 80%;") %>
       <% end %>
     <p><%= product.price_format %></p>
     <p><%= product.description %></p>
-  </div>
-<% end %>
+    </figcaption>
+  </figure>
+    </div>
+  <% end %>
 </div>
