@@ -2,25 +2,23 @@
 <h2>that's... not good</h2>
 
 <%= form_tag("/products/#{@product.id}", method: :put) do %>
-<%= label_tag(:name, "here, this is a start") %>
-  <br>
-  <%= text_field_tag(:name, @product.name) %>
-  <br>
-  <br>
+  <div class="row">
+    <div class="form-group">
+      <%= label_tag(:name, "here, this is a start") %>
+      <%= text_field_tag(:name, @product.name) %>
+    </div>
+    <div class="col-md-6 form-group">
   <%= select_tag(:category_id, options_from_collection_for_select(@categories, :id, :name, @product.category_id)) %>
-  <br>
-  <br>
   <%= label_tag(:description, "hopefully nobody's already bought your defective product") %>
-  <br>
-  <%= text_area_tag(:description, @product.description, size: '40x10') %>
-  <br>
+  <%= text_area_tag(:description, @product.description, size: '20x1') %>
+    </div>
+    <div class="form-group">
   <%= label_tag(:image_url, "Enter the URL of whatever picture you took of your decrepit merchandise") %>
-  <br>
   <%= text_field_tag(:image_url, @product.image_url) %>
-  <br>
+    </div>
+    <div class="form-group">
   <%= label_tag(:price, "i bet it was here") %>
-  <br>
   <%= number_field_tag(:price, @product.price) %>
-  <br>
-  <%= submit_tag("okay, maybe this will look better") %>
+  <%= submit_tag("okay, maybe this will look better", class: "btn btn-success") %>
+    </div>
 <% end %>

@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
 
     if params[:category_id] && Category.ids.include?(params[:category_id].to_i)

@@ -1,7 +1,7 @@
 <h3><%= @product.name %></h3>
 <%= image_tag("#{@product.image_url}", size: "720x480") %>
 <br>
-<%= label_tag(:category_id, @product.category_id) %>
+<!-- <%= label_tag(:category_id, @product.category_id) %> -->
 <p><%= @product.price_format %></p>
 <p><%= @product.description %></p>
 <%= link_to("You goofed something", "/products/#{@product.id}/edit", class: "btn btn-warning") %>
