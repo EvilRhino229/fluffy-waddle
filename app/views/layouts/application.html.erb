@@ -29,7 +29,7 @@
     <% if user_signed_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= current_user.email %> is logged in.
+          <%= current_user.first_name %> is logged in
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to("Change just enough that these things can't find you", edit_user_registration_path, class: "dropdown-item") %>
