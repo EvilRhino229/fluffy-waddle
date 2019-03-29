@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_admin!, except: [:index, :show]
   def index
 
     if params[:category_id] && Category.ids.include?(params[:category_id].to_i)
@@ -21,6 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def create
+    @categories = Category.all.sort
     product = Product.new(
                           name: params[:name],
                           description: params[:description],
@@ -28,9 +30,13 @@ class ProductsController < ApplicationController
                           category_id: params[:category_id],
                           image_url: params[:image_url]
       )
-    product.save
-    flash[:success] = "Nice, that merchandise is someone else's problem now."
-    redirect_to "/products/#{product.id}"
+    if product.save
+      flash[:success] = "Nice, that merchandise is someone else's problem now."
+      redirect_to "/products/#{product.id}"
+    else
+      flash[:error] = "You goofed something!"
+      render 'new'
+    end
   end
 
   def edit

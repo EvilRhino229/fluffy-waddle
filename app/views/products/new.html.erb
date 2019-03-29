@@ -1,7 +1,21 @@
-<h1>wait a second how are you feasibly creating a product, who are you</h1>
+<h1 class="text-center">oh, you're an admin?</h1>
+
+<div class="row justify-content-center">
+  <% if @product && @product.errors.any? %>
+    <div id="error-explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> you goofed, and here's why:</h2>
+
+      <ul>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
 
 <%= form_tag('/products', method: :post) do %>
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-md-3 form-group">
   <%= label_tag(:name, "Go ahead and make your product bud") %>
   <br>
@@ -15,7 +29,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-md-3 form-group">
   <%= label_tag(:description, "Enter the description now") %>
   <br>
@@ -29,7 +43,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-md-3 form-group">
     <%= label_tag(:price, "you might goof here, I won't") %>
     <br>
@@ -37,8 +51,10 @@
   </div>
 </div>
 
-<div class="col-md-3 form-group">    
-  <%= submit_tag("this is totally physically possible", class: "btn btn-success") %>
+<div class="row justify-content-center">
+  <div class="col-md-3 form-group">    
+    <%= submit_tag("this is totally possible", class: "btn btn-success") %>
+  </div>
 </div>
 <!-- options_for_select([["Not Haunted, per se", 1], ["Lightly Haunted", 2], ["Kind Of Haunted", 3], ["Moderately Haunted", 4], ["Very Haunted", 5]], 3)) -->
 <% end %>
