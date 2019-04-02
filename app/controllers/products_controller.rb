@@ -18,22 +18,24 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
     @categories = Category.all.sort
   end
 
   def create
     @categories = Category.all.sort
-    product = Product.new(
+    @product = Product.new(
                           name: params[:name],
                           description: params[:description],
                           price: params[:price],
                           category_id: params[:category_id],
                           image_url: params[:image_url]
       )
-    if product.save
+    if @product.save
       flash[:success] = "Nice, that merchandise is someone else's problem now."
-      redirect_to "/products/#{product.id}"
+      redirect_to "/products/#{@product.id}"
     else
+      @categories = Category.all
       flash[:error] = "You goofed something!"
       render 'new'
     end
@@ -45,16 +47,22 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update(
+    @product = Product.find(params[:id])
+
+    if @product.update(
                    name: params[:name],
                    description: params[:description],
                    price: params[:price],
                    category_id: params[:category_id],
                    image_url: params[:image_url]
       )
-    flash[:notice] = "You fixed that thing you goofed. Nice."
-    redirect_to "/products/#{product.id}"
+      flash[:notice] = "You fixed that thing you goofed. Nice."
+      redirect_to "/products/#{@product.id}"
+    else
+      flash[:error] = "Oops! An issue!"
+      @categories = Category.all
+      render 'edit'
+    end
   end
 
   def destroy

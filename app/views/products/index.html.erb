@@ -1,4 +1,3 @@
-<!--<h1> Haunted Doll Watch (beebeedeebeep beep) <%= @category ? "You're searching for #{@category.name} dolls." : "Haunted Doll Watch (beebeedeebeep beep!)" %></h1>-->
 
 <%= form_tag("/products", method: :get) do %>
 <div class="row">
@@ -15,19 +14,17 @@
     </div>
 
 <% end %>
-<div class="row">
-<!-- <%= link_to("Wanna host your own haunted doll? Beep bebeep?", "/products/new") %> -->
+
+
+<div class="card" style="margin: 5px 5px;">
   <% @products.each do |product| %>
-    <div class="product col-lg-6">
-    <figcaption><%= product.name %>
-      <%= link_to("/products/#{product.id}") do %>
-      <figure>
-      <%= image_tag("#{product.image_url}", style: "height: 80%; width: 80%;") %>
-      <% end %>
-    <p><%= product.price_format %></p>
-    <p><%= product.description %></p>
-    </figcaption>
-  </figure>
+    <div class="card col-md-6">
+      <%= image_tag("#{product.image_url}", style: "height: 80%; width: 80%;", class: "card-img-top") %>
     </div>
-  <% end %>
-</div>
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name %></h5>
+        <p class="card-text"><%= product.price_format %></p>
+        <%= link_to("View Product", "/products/#{product.id}", class: "btn btn-primary") %>
+      </div>
+    <% end %>
+  </div>

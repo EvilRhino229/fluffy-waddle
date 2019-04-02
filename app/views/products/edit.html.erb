@@ -1,19 +1,38 @@
 <h1>what, did you mess something up on an online store?</h1>
 <h2>that's... not good</h2>
 
+<div class="row justify-content-center">
+  <% if @product && @product.errors.any? %>
+    <div id="error-explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> you goofed, and here's why:</h2>
+
+      <ul>
+        <% @product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
 <%= form_tag("/products/#{@product.id}", method: :put) do %>
   <div class="row">
     <div class="col-md-6 form-group">
       <%= label_tag(:name, "here, this is a start") %>
+      <br>
       <%= text_field_tag(:name, @product.name) %>
     </div>
-  <div class="col-md-6 form-group">
+    <div class="col-md-6 form-group">
   <%= select_tag(:category_id, options_from_collection_for_select(@categories, :id, :name, @product.category_id)) %>
-  <%= label_tag(:description, "hopefully nobody's already bought your defective product") %>
+  <br>
+  <%= label_tag(:description, "can you do refunds on souls?") %>
+  <br>
   <%= text_area_tag(:description, @product.description, size: '20x1') %>
+    </div>
   </div>
   <div class="col-md-6 form-group">
-  <%= label_tag(:image_url, "Enter the URL of whatever picture you took of your decrepit merchandise") %>
+  <%= label_tag(:image_url, "Enter the right URL. Dummy.") %>
+  <br>
   <%= text_field_tag(:image_url, @product.image_url) %>
   </div>
   <div class="col-md-6 form-group">

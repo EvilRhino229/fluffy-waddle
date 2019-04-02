@@ -21,7 +21,11 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <%= 'active' if current_page?('/products') %>">
         <!-- <a class="nav-link" href="#">Beebeedeebeep beep<%= (content_tag :span, "(current)", :class => "sr-only") if current_page?("/products") %></a> -->
-        <%= link_to("Haunted Doll Watch (Beebeedeebeep)", "/", class: "navbar-brand") %>
+        <%= link_to("(Beebeedeebeep beep)", "/", class: "nav-link") %>
+      </li>
+      <li class="nav-item <%= 'active' if current_page?('/cart') %>">
+        <!-- <a class="nav-link" href="#">Beebeedeebeep beep<%= (content_tag :span, "(current)", :class => "sr-only") if current_page?("/products") %></a> -->
+        <%= link_to("Ya cart", "/cart", class: "nav-link") %>
       </li>
       <% if user_signed_in? && current_user.is_admin? %>
       <li class="nav-item">
