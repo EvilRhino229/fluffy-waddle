@@ -29,7 +29,7 @@ class ProductsController < ApplicationController
                           description: params[:description],
                           price: params[:price],
                           category_id: params[:category_id],
-                          image_url: params[:image_url]
+                          image: params[:image]
       )
     if @product.save
       flash[:success] = "Nice, that merchandise is someone else's problem now."
@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
                    description: params[:description],
                    price: params[:price],
                    category_id: params[:category_id],
-                   image_url: params[:image_url]
+                   image: params[:image]
       )
       flash[:notice] = "You fixed that thing you goofed. Nice."
       redirect_to "/products/#{@product.id}"

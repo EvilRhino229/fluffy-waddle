@@ -31,6 +31,7 @@ gem 'bootstrap', '~> 4.3.1'
 # gem 'mini_magick', '~> 4.8'
 
 gem 'devise'
+gem "aws-sdk-s3", require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

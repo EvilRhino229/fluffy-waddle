@@ -15,7 +15,7 @@
   <% end %>
 </div>
 
-<%= form_tag("/products/#{@product.id}", method: :put) do %>
+<%= form_tag("/products/#{@product.id}", multipart: true, method: :put) do %>
   <div class="row">
     <div class="col-md-6 form-group">
       <%= label_tag(:name, "here, this is a start") %>
@@ -30,10 +30,10 @@
   <%= text_area_tag(:description, @product.description, size: '20x1') %>
     </div>
   </div>
-  <div class="col-md-6 form-group">
-  <%= label_tag(:image_url, "Enter the right URL. Dummy.") %>
-  <br>
-  <%= text_field_tag(:image_url, @product.image_url) %>
+    <div class="col-md-3 form-group">
+    <%= label_tag(:image, "Upload a weird image") %>
+    <br>
+    <%= file_field_tag(:image) %>
   </div>
   <div class="col-md-6 form-group">
   <%= label_tag(:price, "i bet it was here") %>

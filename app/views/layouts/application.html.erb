@@ -49,11 +49,11 @@
             <%= link_to("Past mistakes", '/orders', class: "dropdown-item") %>
         <% else %>
           <li class="nav-item <%= 'active' if current_page?('/users/sign_in')%>">
-          <%= link_to("/users/sign_in", class: "nav-link") do %>
-        log in <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?("/users/sign_in") %>
-      <% end %>
-        </a>
-      </li>
+            <%= link_to("/users/sign_in", class: "nav-link") do %>
+              log in <%= (content_tag :span, "(current)", :class => "sr-only") if current_page?("/users/sign_in") %>
+            <% end %>
+          </li>
+        <% end %>
         </div>
     <% end %>
     </ul>
@@ -69,7 +69,6 @@
   <div class="container main-content">
     <%= flash_messages %>
     <%= yield %>
-  </body>
   </div>
+  </body>
 </html>
-<% end %>

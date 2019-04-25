@@ -1,6 +1,8 @@
 <div class="text-center">
   <h3><%= @product.name %></h3>
-  <%= image_tag("#{@product.image_url}", size: "720x480") %>
+  <% if @product.image.attached? %>
+  <%= image_tag(@product.image, size: "720x480") %>
+  <% end %>
   <br>
 
   <!-- this is old code that doesn't do anything but put an ugly number on the page, but i won't delete it in case i can implement showing which category a product is in -->

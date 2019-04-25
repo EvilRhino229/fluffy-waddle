@@ -6,7 +6,7 @@
 <% @order.user_products.each do |user_product| %>
   <div class="col-md-4">
     <div class="card col-md-2">
-        <%= image_tag("#{user_product.product.image_url}", style: "height: 100%; width: 100%;", class: "card-img-top") %>
+        <%= image_tag(user_product.product.image, style: "height: 100%; width: 100%;", class: "card-img-top") %>
       </div>
         <div class="card-body">
           <h5 class="card-title"><%= user_product.product.name %></h5>

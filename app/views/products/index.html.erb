@@ -18,7 +18,9 @@
 
   <% @products.each do |product| %>
     <div class="col-md-6">
-      <%= image_tag("#{product.image_url}", style: "height: 100%; width: 100%;") %>
+      <% if product.image.attached? %>
+      <%= image_tag(product.image, style: "height: 100%; width: 100%;") %>
+      <% end %>
         <h5><%= product.name %></h5>
         <p><%= product.price_format %></p>
         <%= link_to("View Product", "/products/#{product.id}", class: "btn btn-primary") %>
